@@ -20,6 +20,8 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
@@ -54,8 +56,15 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Interface
+                Information
             </div>
+
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/crew')}}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>Crew</span></a>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -128,12 +137,6 @@
                     <span>Charts</span></a>
             </li>
 
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/tables')}}">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
@@ -160,19 +163,6 @@
                     <i class="fa fa-bars"></i>
                 </button>
 
-                <!-- Topbar Search -->
-                <form
-                    class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                    <div class="input-group">
-                        <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                            aria-label="Search" aria-describedby="basic-addon2">
-                        <div class="input-group-append">
-                            <button class="btn btn-primary" type="button">
-                                <i class="fas fa-search fa-sm"></i>
-                            </button>
-                        </div>
-                    </div>
-                </form>
 
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
@@ -206,9 +196,9 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$data}}</span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{$session}}</span>
                                 <img class="img-profile rounded-circle"
-                                    src="img/undraw_profile.svg">
+                                    src="{{asset('img/undraw_profile.svg')}}">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"

@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Home')
+@section('title', 'Fa Company - Home')
     
 @section('content')
 

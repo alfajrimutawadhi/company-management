@@ -28,7 +28,7 @@ class AuthController extends Controller
             session([
                 "username" => $request->firstName
             ]);
-             return redirect('/');
+             return view('index', ['session' => $request->firstName]);
         } else {
             return "Tidak dapat mendaftar";
         }
@@ -43,14 +43,18 @@ class AuthController extends Controller
 
         $conn = new User();
         $data = $conn->login($request);
-        if ($request->email == $data->email) {
-            if (Hash::check($request->password, $data->password)) {
-                session([
-                    "username" => $data->firstName
-                ]);
-                return view('index', ['data' => $data->firstName]);
+        if ($data != null) {
+            if ($request->email == $data->email) {
+                if (Hash::check($request->password, $data->password)) {
+                    session([
+                        "username" => $data->firstName
+                    ]);
+                    return view('index', ['session' => $data->firstName]);
+                } else {
+                    return "Password salah!";
+                }
             } else {
-                return "Password salah!";
+                return "Email tidak ditemukan";
             }
         } else {
             return "Email tidak ditemukan";

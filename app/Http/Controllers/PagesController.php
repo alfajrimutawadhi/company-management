@@ -8,7 +8,8 @@ class PagesController extends Controller
 {
     public function index()
     {
-        return view('index');
+        $session = session('username');
+        return view('index', ['session' => $session]);
     }
 
     public function buttons()
