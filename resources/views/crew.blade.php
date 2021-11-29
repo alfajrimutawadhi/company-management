@@ -4,18 +4,21 @@
     
 @section('content')
 
-
-    {{-- <script>
-        $(document).ready( function () {
-            $('#dataTable').DataTable();
-        } );
-    </script> --}}
+    @if (session('status-add'))
+        <script>
+            Swal.fire(
+                'Selamat!',
+                'Data pegawai berhasil ditambah',
+                'success'
+            )
+        </script>
+    @endif
 
     @if (session('status-edit'))
         <script>
             Swal.fire(
                 'Selamat!',
-                'Data berhasil diubah',
+                'Data pegawai berhasil diubah',
                 'success'
             )
         </script>
@@ -25,8 +28,18 @@
         <script>
             Swal.fire(
                 'Selamat!',
-                'Data berhasil dihapus',
+                'Data pegawai berhasil dihapus',
                 'success'
+            )
+        </script>
+    @endif
+    
+    @if (session('status-failed'))
+        <script>
+            Swal.fire(
+                'Peringatan!',
+                'Proses gagal',
+                'error'
             )
         </script>
     @endif
@@ -43,7 +56,7 @@
                 <h6 class="m-0 font-weight-bold text-primary align-middle mt-2" style="float: left;">Crew list</h6>
                 @if (session('username') == 'admin')
                     <div class="tambah-pegawai" style="float: right">
-                        <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                        <a href="{{url('crew/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                             class="fas fa-download fa-sm text-white-50"></i>&nbsp;&nbsp;Add crew</a>
                     </div>
                 @endif

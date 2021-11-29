@@ -9,6 +9,8 @@ class Crew extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['nip', 'nama', 'jabatan', 'jenisKelamin', 'gaji'];
+
     public function edit($request, $crew)
     {
         $data = Crew::where('id', $crew->id)->update([

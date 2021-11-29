@@ -15,7 +15,7 @@
                             <tr>
                                 <td>NIP &nbsp;</td>
                                 <td>:&nbsp;&nbsp;</td>
-                                <td><input type="text" name="nip" class="form-control" value="{{$crew->nip}}" required></td>
+                                <td><input type="number" name="nip" class="form-control" value="{{$crew->nip}}" required></td>
                             </tr>
                             <tr>
                                 <td>Nama &nbsp;</td>

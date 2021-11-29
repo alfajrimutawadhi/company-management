@@ -16,7 +16,7 @@ class CrewController extends Controller
     {
         $session = session('username');
         $crew = Crew::all();
-        return view('crew', ['session' => $session, 'crew' => $crew]);
+        return view('crew', compact('crew', 'session'));
     }
 
     /**
@@ -26,7 +26,8 @@ class CrewController extends Controller
      */
     public function create()
     {
-        //
+        $session = session('username');
+        return view('add', compact('session'));
     }
 
     /**
@@ -37,7 +38,19 @@ class CrewController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'nip' => 'required',
+            'nama' => 'required',
+            'jabatan' => 'required',
+            'jenisKelamin' => 'required',
+            'gaji' => 'required',
+        ]);
+        $data = Crew::create($request->all());
+        if ($data == true) {
+            return redirect('/crew')->with('status-add', true);
+        } else {
+            return redirect('/crew')->with('status-failed', true);
+        }
     }
 
     /**
@@ -85,7 +98,7 @@ class CrewController extends Controller
         if ($data == true) {
             return redirect('/crew')->with('status-edit', true);
         } else {
-            return "Data gagal diubah";
+            return redirect('/crew')->with('status-failed', true);
         }
     }
 
@@ -98,6 +111,10 @@ class CrewController extends Controller
     public function destroy(Crew $crew)
     {
         $data = Crew::where('id', $crew->id)->delete();
-        return back()->with('status-delete', $data);
+        if ($data == true) {
+            return back()->with('status-delete', true);
+        } else {
+            return back()->with('status-failed', true);
+        }
     }
 }
