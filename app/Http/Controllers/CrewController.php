@@ -82,7 +82,7 @@ class CrewController extends Controller
 
         $conn = new Crew();
         $data = $conn->edit($request, $crew);
-        if ($data) {
+        if ($data == true) {
             return redirect('/crew')->with('status-edit', true);
         } else {
             return "Data gagal diubah";

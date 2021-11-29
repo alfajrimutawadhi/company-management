@@ -51,7 +51,7 @@
                             <tr>
                                 <td>Gaji (Rp) &nbsp;</td>
                                 <td>:&nbsp;&nbsp;</td>
-                                <td><input type="text" name="gaji" class="form-control" value="{{$crew->gaji}}" required></td>
+                                <td><input type="text" name="gaji" class="form-control" value="{{$crew->gaji}}" id="gaji" required></td>
                             </tr>
                             <tr>
                                 <td>
