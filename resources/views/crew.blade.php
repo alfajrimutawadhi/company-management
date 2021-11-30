@@ -53,11 +53,11 @@
         <!-- DataTales Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary align-middle mt-2" style="float: left;">Crew list</h6>
+                <h6 class="m-0 font-weight-bold text-primary align-middle mt-2" style="float: left;">Daftar pegawai</h6>
                 @if (session('username') == 'admin')
                     <div class="tambah-pegawai" style="float: right">
                         <a href="{{url('crew/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i>&nbsp;&nbsp;Add crew</a>
+                            class="fas fa-download fa-sm text-white-50"></i>&nbsp;&nbsp;Tambah pegawai</a>
                     </div>
                 @endif
             </div>
@@ -84,13 +84,18 @@
                                     <td>{{$crew->nama}}</td>
                                     <td>{{$crew->jabatan}}</td>
                                     <td>{{$crew->jenisKelamin}}</td>
-                                    <td>{{$crew->gaji}}</td>
+                                    <td>
+                                        {{"Rp " . number_format($crew->gaji,0,',','.')}}
+                                        <div class="btn btn-success btn-sm">
+                                            sudah
+                                        </div>
+                                    </td>
                                     @if (session('username') == 'admin')
                                         <td>
                                             <form action="{{url('crew/'.$crew->id)}}" method="post">
                                                 @csrf
                                                 @method('delete')
-                                                <a href="{{url('crew/'.$crew->id.'/edit')}}" class="btn btn-primary">Edit</a>
+                                                <a href="{{url('crew/'.$crew->id.'/edit')}}" class="btn btn-warning">Edit</a>
                                                 <input type="submit" name="submit" class="btn btn-danger" value="Delete">
                                             </form>
                                         </td>

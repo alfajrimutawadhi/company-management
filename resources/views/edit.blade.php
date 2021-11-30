@@ -1,6 +1,6 @@
 @extends('template')
 
-@section('title', 'Blank')
+@section('title', 'Edit Pegawai')
     
 @section('content')
 
@@ -26,18 +26,7 @@
                                 <td>Jabatan &nbsp;</td>
                                 <td>:&nbsp;&nbsp;</td>
                                 <td>
-                                    <select name="jabatan" class="form-control" required>
-                                        <option value="Owner" @if ($crew->jabatan == 'Owner') selected @endif>Owner</option>
-                                        <option value="Secretary" @if ($crew->jabatan == 'Secretary') selected @endif>Secretary</option>
-                                        <option value="Staff" @if ($crew->jabatan == 'Staff') selected @endif>Staff</option>
-                                        <option value="Software Engineer" @if ($crew->jabatan == 'Software Engineer') selected @endif>Software Engineer</option>
-                                        <option value="Office Manager" @if ($crew->jabatan == 'Office Manager') selected @endif>Office Manager</option>
-                                        <option value="Data Coordinator" @if ($crew->jabatan == 'Data Coordinator') selected @endif>Data Coordinator</option>
-                                        <option value="Systems Administrator" @if ($crew->jabatan == 'Systems Administrator') selected @endif>Systems Administrator</option>
-                                        <option value="Marketing Designer" @if ($crew->jabatan == 'Marketing Designer') selected @endif>Marketing Designer</option>
-                                        <option value="Javascript Developer" @if ($crew->jabatan == 'Javascript Developer') selected @endif>Javascript Developer</option>
-                                        <option value="Accountant" @if ($crew->jabatan == 'Accountant') selected @endif>Accountant</option>
-                                    </select>
+                                    <input type="text" name="jabatan" id="jabatan" class="form-control" required>
                                 </td>
                             </tr>
                             <tr>

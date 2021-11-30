@@ -19,7 +19,8 @@ class CreateCrewsTable extends Migration
             $table->string('nama');
             $table->string('jabatan');
             $table->string('jenisKelamin');
-            $table->string('gaji');
+            $table->integer('gaji');
+            $table->string('statusGaji');
             $table->timestamps();
         });
     }

@@ -14,6 +14,11 @@ class CrewController extends Controller
      */
     public function index()
     {
+        function rupiah($angka){
+            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
+            return $hasil_rupiah;
+        }
+        
         $session = session('username');
         $crew = Crew::all();
         return view('crew', compact('crew', 'session'));
@@ -45,7 +50,12 @@ class CrewController extends Controller
             'jenisKelamin' => 'required',
             'gaji' => 'required',
         ]);
-        $data = Crew::create($request->all());
+
+        $removeRupiah = preg_replace('/[Rp.]/','',$request->gaji);
+        $gaji = (int)str_replace(' ','', $removeRupiah);
+
+        $crew = new Crew();
+        $data = $crew->add($request, $gaji);
         if ($data == true) {
             return redirect('/crew')->with('status-add', true);
         } else {

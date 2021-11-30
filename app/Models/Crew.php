@@ -11,14 +11,36 @@ class Crew extends Model
 
     protected $fillable = ['nip', 'nama', 'jabatan', 'jenisKelamin', 'gaji'];
 
+    public function getPegawai()
+    {
+        $data = count(Crew::all());
+        return $data;
+    }
+
+    public function add($request, $gaji)
+    {
+
+        $data = Crew::create([
+            'nip' => $request->nip,
+            'nama' => $request->nama,
+            'jabatan' => $request->jabatan,
+            'jenisKelamin' => $request->jenisKelamin,
+            'gaji' => $gaji
+        ]);
+        return $data;
+    }
+
     public function edit($request, $crew)
     {
+        $removeRupiah = preg_replace('/[Rp.]/','',$request->gaji);
+        $gaji = (int)str_replace(' ','', $removeRupiah);
+
         $data = Crew::where('id', $crew->id)->update([
             'nip' => $request->nip,
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
             'jenisKelamin' => $request->jenisKelamin,
-            'gaji' => $request->gaji,
+            'gaji' => $gaji,
         ]);
         return $data;
     }

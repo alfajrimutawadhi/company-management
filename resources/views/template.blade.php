@@ -65,7 +65,7 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{url('/crew')}}">
                     <i class="fas fa-fw fa-table"></i>
-                    <span>Crew</span></a>
+                    <span>Pegawai</span></a>
             </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -324,6 +324,7 @@
         <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
         <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
         <script src="{{asset('js/convert-rupiah.js')}}"></script>
+        <script src="{{asset('js/auto-complete.js')}}"></script>
         
 
 </body>
