@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Crew;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -49,7 +50,9 @@ class AuthController extends Controller
                     session([
                         "username" => $data->firstName
                     ]);
-                    return view('index', ['session' => $data->firstName]);
+                    $crew = new Crew();
+                    $getPegawai = $crew->getPegawai();
+                    return view('index', ['session' => $data->firstName, 'getPegawai' => $getPegawai]);
                 } else {
                     return "Password salah!";
                 }
