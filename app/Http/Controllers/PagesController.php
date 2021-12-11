@@ -30,4 +30,5 @@ class PagesController extends Controller
     {
         return view('register');
     }
+
 }

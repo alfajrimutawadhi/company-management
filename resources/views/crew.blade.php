@@ -54,12 +54,13 @@
         <div class="card shadow mb-4">
             <div class="card-header py-3">
                 <h6 class="m-0 font-weight-bold text-primary align-middle mt-2" style="float: left;">Daftar pegawai</h6>
-                @if (session('username') == 'admin')
-                    <div class="tambah-pegawai" style="float: right">
-                        <a href="{{url('crew/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                            class="fas fa-download fa-sm text-white-50"></i>&nbsp;&nbsp;Tambah pegawai</a>
+                <div class="tambah-pegawai" style="float: right">
+                    <a href="{{url('crew/print')}}" class="d-none d-sm-inline-block btn btn-sm btn-secondary shadow-sm" target="_blank">Cetak</a>
+                        @if (session('username') == 'admin')
+                            <a href="{{url('crew/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
+                                class="fas fa-download fa-sm text-white-50"></i>&nbsp;&nbsp;Tambah pegawai</a>
+                        @endif
                     </div>
-                @endif
             </div>
             <div class="card-body">
                 <div class="table-responsive">

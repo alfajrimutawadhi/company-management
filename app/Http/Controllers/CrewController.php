@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crew;
 use Illuminate\Http\Request;
+use PDF;
 
 class CrewController extends Controller
 {
@@ -126,5 +127,16 @@ class CrewController extends Controller
         } else {
             return back()->with('status-failed', true);
         }
+    }
+
+    // sudah bisa
+    public function print()
+    {
+        $data = [
+            'foo' => 'bar'
+        ];
+        $pdf = PDF::loadView('print', $data);
+        return $pdf->stream('document.pdf');
+
     }
 }
