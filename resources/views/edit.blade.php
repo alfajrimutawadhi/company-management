@@ -26,7 +26,7 @@
                                 <td>Jabatan &nbsp;</td>
                                 <td>:&nbsp;&nbsp;</td>
                                 <td>
-                                    <input type="text" name="jabatan" id="jabatan" class="form-control" required>
+                                    <input type="text" name="jabatan" id="jabatan" class="form-control" required value="{{$crew->jabatan}}">
                                 </td>
                             </tr>
                             <tr>
@@ -43,8 +43,18 @@
                                 <td><input type="text" name="gaji" class="form-control" value="{{$crew->gaji}}" id="gaji" required></td>
                             </tr>
                             <tr>
+                                <td>Status Gaji &nbsp;</td>
+                                <td>:&nbsp;&nbsp;</td>
                                 <td>
-                                    <input type="submit" name="submit" value="Ubah" class="btn btn-primary">
+                                    <select name="statusGaji" id="statusGaji" class="form-control">
+                                        <option value="sudah" @if ($crew->statusGaji == 'sudah') selected @endif>Sudah</option>
+                                        <option value="belum" @if ($crew->statusGaji == 'belum') selected @endif>Belum</option>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <input type="submit" name="submit" value="Ubah" class="btn btn-primary" id="submit">
                                 </td>
                             </tr>
                         </table>                    

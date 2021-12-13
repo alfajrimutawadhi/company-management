@@ -9,7 +9,7 @@ class Crew extends Model
 {
     use HasFactory;
 
-    protected $fillable = ['nip', 'nama', 'jabatan', 'jenisKelamin', 'gaji'];
+    protected $fillable = ['nip', 'nama', 'jabatan', 'jenisKelamin', 'gaji', 'statusGaji'];
 
     public function getPegawai()
     {
@@ -25,7 +25,8 @@ class Crew extends Model
             'nama' => $request->nama,
             'jabatan' => $request->jabatan,
             'jenisKelamin' => $request->jenisKelamin,
-            'gaji' => $gaji
+            'gaji' => $gaji,
+            'statusGaji' => $request->statusGaji,
         ]);
         return $data;
     }
@@ -41,6 +42,7 @@ class Crew extends Model
             'jabatan' => $request->jabatan,
             'jenisKelamin' => $request->jenisKelamin,
             'gaji' => $gaji,
+            'statusGaji' => $request->statusGaji
         ]);
         return $data;
     }

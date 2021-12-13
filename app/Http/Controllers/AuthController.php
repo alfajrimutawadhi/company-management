@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crew;
+use App\Models\Finance;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -29,7 +30,11 @@ class AuthController extends Controller
             session([
                 "username" => $request->firstName
             ]);
-             return view('index', ['session' => $request->firstName]);
+            $crew = new Crew();
+            $getPegawai = $crew->getPegawai();
+            $finance = new Finance();
+            $finance = $finance->getKeungan();
+             return view('index', ['session' => $request->firstName, 'getPegawai' => $getPegawai, 'finance' => $finance]);
         } else {
             return "Tidak dapat mendaftar";
         }
@@ -52,7 +57,9 @@ class AuthController extends Controller
                     ]);
                     $crew = new Crew();
                     $getPegawai = $crew->getPegawai();
-                    return view('index', ['session' => $data->firstName, 'getPegawai' => $getPegawai]);
+                    $finance = new Finance();
+                    $finance = $finance->getKeungan();
+                    return view('index', ['session' => $data->firstName, 'getPegawai' => $getPegawai, 'finance' => $finance]);
                 } else {
                     return "Password salah!";
                 }

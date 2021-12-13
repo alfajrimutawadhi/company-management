@@ -87,7 +87,7 @@
                                     <td>{{$crew->jenisKelamin}}</td>
                                     <td>
                                         {{"Rp " . number_format($crew->gaji,0,',','.')}}
-                                        <div class="btn btn-success btn-sm">
+                                        <div class="btn btn-success btn-sm" disabled>
                                             sudah
                                         </div>
                                     </td>

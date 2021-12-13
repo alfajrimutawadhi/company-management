@@ -42,8 +42,18 @@
                     <td><input type="text" name="gaji" class="form-control" id="gaji" required></td>
                 </tr>
                 <tr>
+                    <td>Status Gaji &nbsp;</td>
+                    <td>:&nbsp;&nbsp;</td>
                     <td>
-                        <input type="submit" name="submit" value="Tambah" class="btn btn-primary">
+                        <select name="statusGaji" id="statusGaji" class="form-control">
+                            <option value="sudah">Sudah</option>
+                            <option value="belum">Belum</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="submit" name="submit" value="Tambah" class="btn btn-primary" id="submit">
                     </td>
                 </tr>
             </table>                    

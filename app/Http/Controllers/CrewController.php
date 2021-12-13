@@ -50,6 +50,7 @@ class CrewController extends Controller
             'jabatan' => 'required',
             'jenisKelamin' => 'required',
             'gaji' => 'required',
+            'statusGaji' => 'required',
         ]);
 
         $removeRupiah = preg_replace('/[Rp.]/','',$request->gaji);
@@ -132,8 +133,9 @@ class CrewController extends Controller
     // sudah bisa
     public function print()
     {
+        $crew = Crew::all();
         $data = [
-            'foo' => 'bar'
+            'crew' => $crew
         ];
         $pdf = PDF::loadView('print', $data);
         return $pdf->stream('document.pdf');

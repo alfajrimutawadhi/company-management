@@ -324,7 +324,7 @@
         <script src="{{asset('js/demo/chart-area-demo.js')}}"></script>
         <script src="{{asset('js/demo/chart-pie-demo.js')}}"></script>
         <script src="{{asset('js/convert-rupiah.js')}}"></script>
-        <script src="{{asset('js/auto-complete.js')}}"></script>
+        <script src="{{asset('js/convert-keuangan.js')}}"></script>
         
 
 </body>
