@@ -14,7 +14,7 @@ class PagesController extends Controller
         $crew = new Crew();
         $getPegawai = $crew->getPegawai();
         $finance = new Finance();
-        $finance = $finance->getKeungan();
+        $finance = $finance->getKeuangan();
         return view('index', compact('session', 'getPegawai', 'finance'));
     }
 

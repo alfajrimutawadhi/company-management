@@ -1,15 +1,6 @@
 var rupiah = document.getElementById("gaji");
 if (rupiah) {
-  function convertRupiah(nominal) {
-    const numb = nominal;
-    const format = numb.toString().split('').reverse().join('');
-    const convert = format.match(/\d{1,3}/g);
-    const rupiah = 'Rp ' + convert.join('.').split('').reverse().join('')
-    return rupiah;
-  }
-  rupiah.value = convertRupiah(rupiah.value);
-
-  rupiah.addEventListener("keyup", function(e) {
+    rupiah.addEventListener("keyup", function(e) {
     // tambahkan 'Rp.' pada saat form di ketik
     // gunakan fungsi formatRupiah() untuk mengubah angka yang di ketik menjadi format angka
     rupiah.value = formatRupiah(this.value, "Rp. ");

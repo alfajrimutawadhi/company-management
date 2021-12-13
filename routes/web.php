@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CrewController;
+use App\Http\Controllers\FinancialrecordController;
 use App\Http\Controllers\PagesController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,3 +29,5 @@ Route::post('/logout', [AuthController::class, 'logout']);
 
 Route::get('crew/print', [CrewController::class, 'print']);
 Route::resource('crew', CrewController::class);
+
+Route::resource('finance', FinancialrecordController::class);

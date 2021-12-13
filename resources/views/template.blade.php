@@ -67,13 +67,19 @@
                     <i class="fas fa-fw fa-table"></i>
                     <span>Pegawai</span></a>
             </li>
+            
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/finance')}}">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <span>Keuangan</span></a>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
                     aria-expanded="true" aria-controls="collapseTwo">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
+                    <span>Pengaturan</span>
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">

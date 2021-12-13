@@ -4,20 +4,22 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Http\Client\Request;
 
 class Finance extends Model
 {
     use HasFactory;
 
-    public function getKeungan()
+    
+
+    public function getKeuangan()
     {
         $finance = Finance::where('id', 1)->first();
         return $finance;
     }
 
-    public function ubahKeuangan(Request $request)
+    public function ubahKeuangan($request)
     {
-        # code...
+        $finance = Finance::where('id', 1)->update(['keuangan' => $request]);
+        return $finance;
     }
 }

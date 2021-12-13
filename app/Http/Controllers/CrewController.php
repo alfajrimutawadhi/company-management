@@ -122,6 +122,7 @@ class CrewController extends Controller
      */
     public function destroy(Crew $crew)
     {
+        dd($crew);
         $data = Crew::where('id', $crew->id)->delete();
         if ($data == true) {
             return back()->with('status-delete', true);

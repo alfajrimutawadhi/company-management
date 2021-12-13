@@ -73,7 +73,7 @@
                                 <th>Jenis Kelamin</th>
                                 <th>Gaji</th>
                                 @if (session('username') == 'admin')
-                                    <th>Keterangan</th>
+                                    <th>&nbsp;</th>
                                     
                                 @endif
                             </tr>
@@ -87,9 +87,16 @@
                                     <td>{{$crew->jenisKelamin}}</td>
                                     <td>
                                         {{"Rp " . number_format($crew->gaji,0,',','.')}}
-                                        <div class="btn btn-success btn-sm" disabled>
-                                            sudah
-                                        </div>
+                                        @if ($crew->statusGaji == 'sudah')
+                                            <div class="btn btn-success btn-sm">
+                                                sudah
+                                            </div>
+                                        @endif
+                                        @if ($crew->statusGaji == 'belum')
+                                            <div class="btn btn-danger btn-sm">
+                                                belum
+                                            </div>
+                                        @endif
                                     </td>
                                     @if (session('username') == 'admin')
                                         <td>
