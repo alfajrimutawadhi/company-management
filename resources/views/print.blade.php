@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Daftar Pegawai</title>
     <link rel="icon" href="{{asset('/img/logo-comp.png')}}">
+    
 
 </head>
 <body>
@@ -33,6 +34,30 @@
                 </tr>
             @endforeach
         </tbody>
+    </table>
+    <br><br>
+    <table style="margin-left: auto">
+        <tr>
+            <td>Surakarta, {{date('d-m-Y')}}</td>
+        </tr>
+        <tr>
+            <td>Kepala Direktur</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td>&nbsp;</td>
+        </tr>
+        <tr>
+            <td><u>Muhammad Mutawadhi' Alfajri</u></td>
+        </tr>
+        <tr>
+            <td>NIM. L200190032</td>
+        </tr>
     </table>
 </body>
 </html>
