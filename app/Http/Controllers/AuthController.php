@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crew;
 use App\Models\Finance;
+use App\Models\Money;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -31,10 +32,10 @@ class AuthController extends Controller
                 "username" => $request->firstName
             ]);
             $crew = new Crew();
-            $getPegawai = $crew->getPegawai();
-            $finance = new Finance();
-            $finance = $finance->getKeungan();
-             return view('index', ['session' => $request->firstName, 'getPegawai' => $getPegawai, 'finance' => $finance]);
+            $getJumlahPegawai = $crew->getJumlahPegawai();
+            $money = new Money();
+            $money = $money->getKeuangan();
+             return view('index', ['session' => $request->firstName, 'getJumlahPegawai' => $getJumlahPegawai, 'money' => $money]);
         } else {
             return "Tidak dapat mendaftar";
         }
@@ -56,10 +57,10 @@ class AuthController extends Controller
                         "username" => $data->firstName
                     ]);
                     $crew = new Crew();
-                    $getPegawai = $crew->getPegawai();
-                    $finance = new Finance();
-                    $finance = $finance->getKeungan();
-                    return view('index', ['session' => $data->firstName, 'getPegawai' => $getPegawai, 'finance' => $finance]);
+                    $getJumlahPegawai = $crew->getJumlahPegawai();
+                    $money = new Money();
+                    $money = $money->getKeuangan();
+                    return view('index', ['session' => $data->firstName, 'getJumlahPegawai' => $getJumlahPegawai, 'money' => $money]);
                 } else {
                     return "Password salah!";
                 }

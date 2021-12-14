@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Crew;
 use App\Models\Finance;
+use App\Models\Money;
 use Illuminate\Http\Request;
 
 class PagesController extends Controller
@@ -12,10 +13,10 @@ class PagesController extends Controller
     {
         $session = session('username');
         $crew = new Crew();
-        $getPegawai = $crew->getPegawai();
-        $finance = new Finance();
-        $finance = $finance->getKeuangan();
-        return view('index', compact('session', 'getPegawai', 'finance'));
+        $getJumlahPegawai = $crew->getJumlahPegawai();
+        $money = new Money();
+        $money = $money->getKeuangan();
+        return view('index', compact('session', 'getJumlahPegawai', 'money'));
     }
 
     public function buttons()
@@ -34,4 +35,11 @@ class PagesController extends Controller
         return view('register');
     }
 
+    public function payroll()
+    {
+        $session = session('username');
+        $crew = new Crew();
+        $crew = $crew->getPegawaiYangBelumDigaji();
+        return view('payroll', compact('session', 'crew'));
+    }
 }

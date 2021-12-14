@@ -2,8 +2,9 @@
 
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CrewController;
-use App\Http\Controllers\FinancialrecordController;
+use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\PagesController;
+use App\Http\Controllers\PayrollController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -22,6 +23,7 @@ Route::get('/', [PagesController::class, 'index']);
 Route::get('/buttons', [PagesController::class, 'buttons']);
 Route::get('/login', [PagesController::class, 'login']);
 Route::get('/register', [PagesController::class, 'register']);
+Route::get('/payroll', [PagesController::class, 'payroll']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);
@@ -30,4 +32,6 @@ Route::post('/logout', [AuthController::class, 'logout']);
 Route::get('crew/print', [CrewController::class, 'print']);
 Route::resource('crew', CrewController::class);
 
-Route::resource('finance', FinancialrecordController::class);
+Route::resource('finance', FinanceController::class);
+
+Route::post('/payroll', [PayrollController::class, 'payroll']);

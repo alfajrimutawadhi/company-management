@@ -15,7 +15,9 @@ class CreateFinancesTable extends Migration
     {
         Schema::create('finances', function (Blueprint $table) {
             $table->id();
-            $table->integer("keuangan");
+            $table->integer("nominal");
+            $table->string("status");
+            $table->string("keterangan");
             $table->timestamps();
         });
     }

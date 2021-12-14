@@ -39,11 +39,16 @@
                 <div class="container-fluid">
 
                     <!-- Page Heading -->
-                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                    <div class="d-sm-flex align-items-center justify-content-between">
                         <h1 class="h3 mb-0 text-gray-800">Keuangan</h1>
                         @if (session('username') == 'admin')
-                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#financeModal"><i
-                                    class="fas fa-download fa-sm text-white-50"></i> Tambah Data Keuangan</a>
+                            <a href="#" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm" data-toggle="modal" data-target="#financeModal"><i class="fas fa-download fa-sm text-white-50"></i> Tambah Data Keuangan</a>
+                        @endif
+                    </div>
+                    <div class="d-sm-flex align-items-center justify-content-between mb-4">
+                        <h1 class="h3 mb-0 text-gray-800"></h1>
+                        @if (session('username') == 'admin')
+                            <a href="{{url('/payroll')}}" class="btn btn-secondary shadow-sm"><i class="fas fa-file-invoice-dollar fa-sm text-white-50"></i>&nbsp; Penggajian</a>
                         @endif
                     </div>
 
@@ -101,7 +106,7 @@
                                     <div class="col mr-2">
                                         <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
                                             keuangan</div>
-                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="finance">@if (!$finance) 0 @endif @if ($finance){{$finance->keuangan}} @endif</div>
+                                        <div class="h5 mb-0 font-weight-bold text-gray-800" id="finance">@if (!$money) 0 @endif @if ($money){{$money->keuangan}} @endif</div>
                                     </div>
                                     <div class="col-auto">
                                         <i class="fas fa-dollar-sign fa-2x text-gray-300"></i>
@@ -128,7 +133,7 @@
                                 </thead>
                                 <tbody>
                                     <?php $i = 1; ?>
-                                    @foreach ($financialRecord as $data)
+                                    @foreach ($finance as $data)
                                         <tr>
                                             <td>{{$i++}}</td>
                                             <td>{{"Rp " . number_format($data->nominal,0,',','.')}}</td>

@@ -11,7 +11,13 @@ class Crew extends Model
 
     protected $fillable = ['nip', 'nama', 'jabatan', 'jenisKelamin', 'gaji', 'statusGaji'];
 
-    public function getPegawai()
+    public function getPegawai($nip)
+    {
+        $data = Crew::where('nip', $nip)->first();
+        return $data;
+    }
+
+    public function getJumlahPegawai()
     {
         $data = count(Crew::all());
         return $data;
@@ -43,6 +49,26 @@ class Crew extends Model
             'jenisKelamin' => $request->jenisKelamin,
             'gaji' => $gaji,
             'statusGaji' => $request->statusGaji
+        ]);
+        return $data;
+    }
+
+    public function getPegawaiYangBelumDigaji()
+    {
+        $data = Crew::where('statusGaji', 'belum')->get();
+        return $data;
+    }
+
+    public function getGaji($nip)
+    {
+        $data = Crew::where('nip', $nip)->first()->gaji;
+        return $data;
+    }
+
+    public function ubahStatusGaji($nip)
+    {
+        $data = Crew::where('nip', $nip)->update([
+            'statusGaji' => 'sudah'
         ]);
         return $data;
     }

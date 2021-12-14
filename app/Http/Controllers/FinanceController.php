@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Finance;
-use App\Models\Financialrecord;
+use App\Models\Money;
 use Illuminate\Http\Request;
 
-class FinancialrecordController extends Controller
+class FinanceController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,11 +15,11 @@ class FinancialrecordController extends Controller
      */
     public function index()
     {
-        $finance = new Finance();
-        $finance = $finance->getKeuangan();
+        $money = new Money();
+        $money = $money->getKeuangan();
         $session = session('username');
-        $financialRecord = Financialrecord::all();
-        return view('finance', compact('session', 'finance', 'financialRecord'));
+        $finance = Finance::all();
+        return view('finance', compact('session', 'finance', 'money'));
     }
 
     /**
@@ -49,22 +49,22 @@ class FinancialrecordController extends Controller
         $removeRupiah = preg_replace('/[Rp.]/','',$request->nominal);
         $nominal = (int)str_replace(' ','', $removeRupiah);
 
+        $money = new Money();
+        $getKeuangan = $money->getKeuangan();
         $finance = new Finance();
-        $getKeuangan = $finance->getKeuangan();
-        $financialRecord = new Financialrecord();
-        $financialRecord->nominal = $nominal;
-        $financialRecord->status = $request->status;
-        $financialRecord->keterangan = $request->keterangan;
+        $finance->nominal = $nominal;
+        $finance->status = $request->status;
+        $finance->keterangan = $request->keterangan;
         if ($request->status == 'masuk') {
-            $financialRecord->save();
+            $finance->save();
             $nominalBaru = $getKeuangan->keuangan + $nominal;
-            $finance->ubahKeuangan($nominalBaru);
+            $money->ubahKeuangan($nominalBaru);
             return redirect('/finance')->with('status-finance-success', true);
         } else {
             $nominalBaru = $getKeuangan->keuangan - $nominal;
             if ($nominalBaru > 0) {
-                $financialRecord->save();
-                $finance->ubahKeuangan($nominalBaru);
+                $finance->save();
+                $money->ubahKeuangan($nominalBaru);
                 return redirect('/finance')->with('status-finance-success', true);
             } else {
                 return redirect('/finance')->with('status-finance-failed', 'kurang');
@@ -76,10 +76,10 @@ class FinancialrecordController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Financialrecord  $financialrecord
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function show(Financialrecord $financialrecord)
+    public function show(Finance $finance)
     {
         //
     }
@@ -87,10 +87,10 @@ class FinancialrecordController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Financialrecord  $financialrecord
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function edit(Financialrecord $financialrecord)
+    public function edit(Finance $finance)
     {
         //
     }
@@ -99,10 +99,10 @@ class FinancialrecordController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Financialrecord  $financialrecord
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Financialrecord $financialrecord)
+    public function update(Request $request, Finance $finance)
     {
         //
     }
@@ -110,14 +110,12 @@ class FinancialrecordController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Financialrecord  $financialrecord
+     * @param  \App\Models\Finance  $finance
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Financialrecord $financialrecord)
+    public function destroy(Finance $finance)
     {
-        // MODEL BELUM TERKONEKSI KE DATABASE
-        dd($financialrecord);
-        $data = FinancialRecord::where('id', $financialrecord->id)->delete();
+        $data = Finance::where('id', $finance->id)->delete();
         if ($data == true) {
             return back()->with('status-finance-success', true);
         } else {

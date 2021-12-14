@@ -9,17 +9,15 @@ class Finance extends Model
 {
     use HasFactory;
 
-    
+    protected $fillable = ['nominal', 'status', 'keterangan'];
 
-    public function getKeuangan()
+    public function penggajian($crew)
     {
-        $finance = Finance::where('id', 1)->first();
-        return $finance;
-    }
-
-    public function ubahKeuangan($request)
-    {
-        $finance = Finance::where('id', 1)->update(['keuangan' => $request]);
+        $finance = Finance::create([
+            'nominal' => $crew->gaji,
+            'status' => 'keluar',
+            'keterangan' => 'Gaji untuk '.$crew->nama,
+        ]);
         return $finance;
     }
 }

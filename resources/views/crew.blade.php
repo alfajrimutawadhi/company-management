@@ -60,7 +60,7 @@
                             <a href="{{url('crew/create')}}" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
                                 class="fas fa-download fa-sm text-white-50"></i>&nbsp;&nbsp;Tambah pegawai</a>
                         @endif
-                    </div>
+                </div>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
