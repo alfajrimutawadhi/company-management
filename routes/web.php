@@ -19,8 +19,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get('/', [PagesController::class, 'index']);
-Route::get('/buttons', [PagesController::class, 'buttons']);
+Route::get('/', [PagesController::class, 'index'])->middleware(['auth_session']);
 Route::get('/login', [PagesController::class, 'login']);
 Route::get('/register', [PagesController::class, 'register']);
 Route::get('/payroll', [PagesController::class, 'payroll']);
