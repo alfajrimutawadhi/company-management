@@ -42,4 +42,10 @@ class PagesController extends Controller
         $crew = $crew->getPegawaiYangBelumDigaji();
         return view('payroll', compact('session', 'crew'));
     }
+
+    public function project()
+    {
+        $session = session('username');
+        return view('project', compact('session'));
+    }
 }

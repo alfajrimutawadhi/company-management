@@ -23,6 +23,7 @@ Route::get('/', [PagesController::class, 'index'])->middleware(['auth_session'])
 Route::get('/login', [PagesController::class, 'login']);
 Route::get('/register', [PagesController::class, 'register']);
 Route::get('/payroll', [PagesController::class, 'payroll']);
+Route::get('/project', [PagesController::class, 'project']);
 
 Route::post('/register', [AuthController::class, 'register']);
 Route::post('/login', [AuthController::class, 'login']);

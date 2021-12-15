@@ -40,7 +40,7 @@
                             <tr>
                                 <td>Gaji (Rp) &nbsp;</td>
                                 <td>:&nbsp;&nbsp;</td>
-                                <td><input type="text" name="gaji" class="form-control" value="{{$crew->gaji}}" id="gaji" required></td>
+                                <td><input type="text" name="gaji" class="form-control" value="{{"Rp " . number_format($crew->gaji,0,',','.')}}" id="gaji" required></td>
                             </tr>
                             <tr>
                                 <td>Status Gaji &nbsp;</td>

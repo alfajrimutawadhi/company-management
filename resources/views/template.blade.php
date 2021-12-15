@@ -74,6 +74,16 @@
                     <span>Keuangan</span></a>
             </li>
 
+            <!-- Divider -->
+            <hr class="sidebar-divider d-none d-md-block">
+
+            <!-- Nav Item - Project -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{url('/project')}}">
+                    <i class="fas fa-fw fa-chart-area"></i>
+                    <span>Project</span></a>
+            </li>
+
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
@@ -83,9 +93,9 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Custom Components:</h6>
-                        <a class="collapse-item" href="{{url('/buttons')}}">Buttons</a>
-                        <a class="collapse-item" href="{{url('/cards')}}">Cards</a>
+                        <h6 class="collapse-header">Pengaturan :</h6>
+                        <a class="collapse-item" href="#">Tampilan</a>
+                        <a class="collapse-item" href="#">Profil perusahaan</a>
                     </div>
                 </div>
             </li>
@@ -101,10 +111,10 @@
                     data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Custom Utilities:</h6>
-                        <a class="collapse-item" href="{{url('/utilities-color')}}">Colors</a>
-                        <a class="collapse-item" href="{{url('/utilities-border')}}">Borders</a>
-                        <a class="collapse-item" href="{{url('/utilities-animation')}}">Animations</a>
-                        <a class="collapse-item" href="{{url('/utilities-other')}}">Other</a>
+                        <a class="collapse-item" href="#">Colors</a>
+                        <a class="collapse-item" href="#">Borders</a>
+                        <a class="collapse-item" href="#">Animations</a>
+                        <a class="collapse-item" href="#">Other</a>
                     </div>
                 </div>
             </li>
@@ -138,16 +148,8 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Charts -->
-            <li class="nav-item">
-                <a class="nav-link" href="{{url('/charts')}}">
-                    <i class="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
+            
 
-
-            <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
