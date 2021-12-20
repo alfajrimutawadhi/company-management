@@ -29,8 +29,6 @@
                                         <canvas id="myAreaChart"></canvas>
                                     </div>
                                     <hr>
-                                    Styling for the area chart can be found in the
-                                    <code>/js/demo/chart-area-demo.js</code> file.
                                 </div>
                             </div>
 
@@ -87,9 +85,6 @@
                                     <div class="chart-pie pt-4">
                                         <canvas id="myPieChart"></canvas>
                                     </div>
-                                    <hr>
-                                    Styling for the donut chart can be found in the
-                                    <code>/js/demo/chart-pie-demo.js</code> file.
                                 </div>
                             </div>
                         </div>

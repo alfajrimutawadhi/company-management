@@ -21,11 +21,24 @@ class AuthController extends Controller
         ]);
 
         $conn = new User();
-        $conn->firstName = $request->firstName;
-        $conn->lastName = $request->lastName;
-        $conn->email = $request->email;
-        $conn->password = Hash::make($request->password);
-        $save = $conn->save();
+        $dataUser = $conn->all();
+        $cekEmail = true;
+        foreach ($dataUser as $key) {
+            if ($key->email == $request->email) {
+                $cekEmail = false;
+            } else {
+                continue;
+            }
+        }
+        if ($cekEmail) {
+            $conn->firstName = $request->firstName;
+            $conn->lastName = $request->lastName;
+            $conn->email = $request->email;
+            $conn->password = Hash::make($request->password);
+            $save = $conn->save();
+        } else {
+            return redirect('/register')->with('statusDaftar', 'emailSudahTerdaftar');
+        }
 
         if ($save) {
             session([
@@ -37,7 +50,7 @@ class AuthController extends Controller
             $money = $money->getKeuangan();
              return view('index', ['session' => $request->firstName, 'getJumlahPegawai' => $getJumlahPegawai, 'money' => $money]);
         } else {
-            return "Tidak dapat mendaftar";
+            return redirect('/register')->with('statusDaftar', 'gagalMendaftar');
         }
     }
 
@@ -51,24 +64,20 @@ class AuthController extends Controller
         $conn = new User();
         $data = $conn->login($request);
         if ($data != null) {
-            if ($request->email == $data->email) {
-                if (Hash::check($request->password, $data->password)) {
-                    session([
-                        "username" => $data->firstName
-                    ]);
-                    $crew = new Crew();
-                    $getJumlahPegawai = $crew->getJumlahPegawai();
-                    $money = new Money();
-                    $money = $money->getKeuangan();
-                    return view('index', ['session' => $data->firstName, 'getJumlahPegawai' => $getJumlahPegawai, 'money' => $money]);
-                } else {
-                    return "Password salah!";
-                }
+            if (Hash::check($request->password, $data->password)) {
+                session([
+                    "username" => $data->firstName
+                ]);
+                $crew = new Crew();
+                $getJumlahPegawai = $crew->getJumlahPegawai();
+                $money = new Money();
+                $money = $money->getKeuangan();
+                return view('index', ['session' => $data->firstName, 'getJumlahPegawai' => $getJumlahPegawai, 'money' => $money]);
             } else {
-                return "Email tidak ditemukan";
+                return redirect('/login')->with('statusLogin', 'passwordSalah');
             }
         } else {
-            return "Email tidak ditemukan";
+            return redirect('/login')->with('statusLogin', 'emailTidakDitemukan');
         }
     }
 

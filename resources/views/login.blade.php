@@ -21,10 +21,31 @@
 
     <!-- Custom styles for this template-->
     <link href="css/sb-admin-2.min.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body class="bg-gradient-primary">
+
+    @if (session('statusLogin') == 'passwordSalah')
+        <script>
+            Swal.fire(
+                'Gagal!',
+                'Password salah!',
+                'error'
+                )
+        </script>
+    @endif
+
+    @if (session('statusLogin') == 'emailTidakDitemukan')
+        <script>
+            Swal.fire(
+                'Gagal!',
+                'Email tidak ditemukan!',
+                'error'
+                )
+        </script>
+    @endif
 
     <div class="container">
 

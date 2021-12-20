@@ -21,10 +21,32 @@
 
     <!-- Custom styles for this template-->
     <link href="{{url('css/sb-admin-2.min.css')}}" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 </head>
 
 <body class="bg-gradient-primary">
+
+    @if (session('statusDaftar') == 'emailSudahTerdaftar')
+        <script>
+            Swal.fire(
+                'Gagal!',
+                'Email telah terdaftar!',
+                'error'
+                )
+        </script>
+    @endif
+    
+    @if (session('statusDaftar') == 'gagalMendaftar')
+        <script>
+            Swal.fire(
+                'Gagal!',
+                'Gagal mendaftar!',
+                'error'
+                )
+        </script>
+    @endif
+    
 
     <div class="container">
 
