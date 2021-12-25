@@ -133,7 +133,7 @@ class CrewController extends Controller
     // sudah bisa
     public function print()
     {
-        $crew = Crew::all();
+        $crew = Crew::all()->sortBy('nip');
         $data = [
             'crew' => $crew
         ];
