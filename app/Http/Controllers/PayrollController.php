@@ -26,7 +26,5 @@ class PayrollController extends Controller
         } else {
             return redirect('/payroll')->with('status-gaji', 'gagal');
         }
-
-
     }
 }
