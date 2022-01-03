@@ -3,9 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crew;
-use App\Models\Finance;
 use App\Models\Money;
-use Illuminate\Http\Request;
 
 class PagesController extends Controller
 {
