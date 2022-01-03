@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Crew;
-use App\Models\Finance;
 use App\Models\Money;
 use App\Models\User;
 use Illuminate\Http\Request;
